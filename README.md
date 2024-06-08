@@ -3,14 +3,14 @@
 ## Warning
 **Important:** Ensure you have a valid SSL certificate for your pfSense web interface. You can easily create one using ACME. Additionally, you must use the hostname (not the IP address) for `PFSENSE_IP`.
 
-This script automates the process of backing up the configuration of a pfSense firewall. It logs into the pfSense web interface, retrieves the configuration file, and uploads it to OneDrive using `rclone`.
+This script automates the process of backing up the configuration of a pfSense firewall. It logs into the pfSense web interface, retrieves the configuration file, and uploads it to a specified destination using `rclone`.
 
 ## Prerequisites
 
 Before using this script, make sure you have the following:
 
 1. **curl**: To interact with the pfSense web interface.
-2. **rclone**: To upload the backup file to OneDrive.
+2. **rclone**: To upload the backup file to a specified destination.
 3. **Access to pfSense**: Ensure you have the correct IP/hostname, port, username, and password for your pfSense instance.
 
 ## Usage
@@ -32,7 +32,7 @@ Before using this script, make sure you have the following:
     ```
 
 3. **Set Up rclone**:
-   Ensure that `rclone` is configured to connect to your OneDrive account. Follow the [rclone configuration guide](https://rclone.org/onedrive/) if you haven't done this yet.
+   Ensure that `rclone` is configured to connect to your desired destination. Follow the [rclone configuration guide](https://rclone.org/) for the specific cloud service or storage you want to use.
 
 4. **Run the Script**:
     ```sh
@@ -76,15 +76,15 @@ Before using this script, make sure you have the following:
 5. **Clean Up**:
     - Removes temporary files used for storing cookies and CSRF tokens.
 
-6. **Upload to OneDrive**:
-    - Uses `rclone` to copy the backup file to OneDrive.
+6. **Upload to Destination**:
+    - Uses `rclone` to copy the backup file to the specified destination. This can be any supported cloud service or local storage.
 
 7. **Notification**:
     - Sends a notification if the `rclone` operation fails.
 
 ## Notifications
 
-The script includes a notification function that can send alerts if the `rclone` operation fails. This function checks for a specific notification script located at `/usr/local/emhttp/webGui/scripts/notify`.
+The script is designed to be executed on Unraid and uses the notification system configured on your Unraid server. This could include notifications via Telegram, email, or other services. The script checks for a specific notification script located at `/usr/local/emhttp/webGui/scripts/notify`.
 
 ## License
 
