@@ -1,5 +1,8 @@
 # pfSense Backup Script
 
+## Warning
+**Important:** Ensure you have a valid SSL certificate for your pfSense web interface. You can easily create one using ACME. Additionally, you must use the hostname (not the IP address) for `PFSENSE_IP`.
+
 This script automates the process of backing up the configuration of a pfSense firewall. It logs into the pfSense web interface, retrieves the configuration file, and uploads it to OneDrive using `rclone`.
 
 ## Prerequisites
@@ -53,6 +56,8 @@ Before using this script, make sure you have the following:
     - `BACKUP_DIR`: Full path of the backup directory.
     - `BACKUP_FILE`: Full path of the backup file.
     - `COOKIE_FILE`, `CSRF_FILE`: Temporary files for storing cookies and CSRF tokens.
+    - `SRC_PATH`: Source path for `rclone` to copy files from.
+    - `DESTINATION`: Destination path for `rclone` to copy files to.
 
 ### Main Steps
 
